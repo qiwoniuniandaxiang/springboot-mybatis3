@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    username: root
+    password: 123
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/1904_travel?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  mvc:
+    date-format: yyyy-MM-dd
+  thymeleaf:
+    cache: false
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+server:
+  port: 8080
+  servlet:
+    context-path: /hello
+logging:
+  file: d://logs//all.log
+
+
+

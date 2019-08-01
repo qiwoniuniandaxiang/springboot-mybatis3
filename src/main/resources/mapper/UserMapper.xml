@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.springbootmybatis.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.qf.springbootmybatis.entity.User">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="usernum" jdbcType="VARCHAR" property="usernum" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="postal_code" jdbcType="VARCHAR" property="postalCode" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="ID_type" jdbcType="INTEGER" property="idType" />
+    <result column="cardid" jdbcType="VARCHAR" property="cardid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, username, password, sex, usernum, birthday, email, phone, postal_code, address, 
+    ID_type, cardid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qf.springbootmybatis.entity.User">
+    insert into t_user (user_id, username, password, 
+      sex, usernum, birthday, 
+      email, phone, postal_code, 
+      address, ID_type, cardid
+      )
+    values (#{userId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=INTEGER}, #{usernum,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
+      #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{postalCode,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{idType,jdbcType=INTEGER}, #{cardid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qf.springbootmybatis.entity.User">
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="usernum != null">
+        usernum,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="postalCode != null">
+        postal_code,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="idType != null">
+        ID_type,
+      </if>
+      <if test="cardid != null">
+        cardid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="usernum != null">
+        #{usernum,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="postalCode != null">
+        #{postalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null">
+        #{idType,jdbcType=INTEGER},
+      </if>
+      <if test="cardid != null">
+        #{cardid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qf.springbootmybatis.entity.User">
+    update t_user
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="usernum != null">
+        usernum = #{usernum,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="postalCode != null">
+        postal_code = #{postalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null">
+        ID_type = #{idType,jdbcType=INTEGER},
+      </if>
+      <if test="cardid != null">
+        cardid = #{cardid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qf.springbootmybatis.entity.User">
+    update t_user
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      usernum = #{usernum,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      email = #{email,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      postal_code = #{postalCode,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      ID_type = #{idType,jdbcType=INTEGER},
+      cardid = #{cardid,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByName" resultMap="BaseResultMap">
+    SELECT * FROM t_user WHERE username=#{username};
+  </select>
+
+  <select id="login" resultMap="BaseResultMap">
+    SELECT * FROM t_user WHERE username=#{user.username} AND password=#{user.password}
+  </select>
+  <update id="modifier" parameterType="com.qf.springbootmybatis.entity.User">
+    update t_user
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="usernum != null">
+        usernum = #{usernum,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="postalCode != null">
+        postal_code = #{postalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null">
+        ID_type = #{idType,jdbcType=INTEGER},
+      </if>
+      <if test="cardid != null">
+        cardid = #{cardid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id=#{user.userId}
+  </update>
+   <update id="modpassword">
+  UPDATE t_user set password=#{password} WHERE user_id=#{userId}
+   </update>
+<select id="queryUserByrName" resultMap="BaseResultMap">
+  SELECT * FROM  t_user WHERE username=#{username}
+</select>
+
+  <select id="getUserPage" resultMap="BaseResultMap">
+    SELECT * FROM t_user WHERE usernum is  null
+  </select>
+
+  <select id="selectByCondition" parameterType="string" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+    <where>
+      <if test="_parameter!=null and _parameter!=''">
+        username like concat('%',#{userName},'%')
+      </if>
+    </where>
+  </select>
+
+  <select id="getUserById" parameterType="integer" resultMap="BaseResultMap">
+    select * from t_user where user_id=#{userId}
+  </select>
+</mapper>

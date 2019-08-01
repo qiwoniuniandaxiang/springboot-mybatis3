@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span th:text="${name}">二狗子</span></body><br/>
+    <span th:text="名字+${name}">犬</span><br/>
+    <span th:text="|名字,${name}|">猪</span><br/>
+
+    <!--判断语句-->
+    <span th:if="${sex > 18}">猫</span><br/>
+    <span th:if="${sex <= 18}">鼠</span><br/>
+    <span th:unless="${sex > 19}" th:text="小鬼">大头鬼</span>
+
+    <!--三元运算符-->
+    <span th:text="${sex>20?'好好上班':'好好学习'}"></span>
+
+    <table>
+        <tr>
+            <td>姓名</td>
+            <td>密码</td>
+            <td>生日</td>
+        </tr>
+        <tr th:each="stu : ${list}">
+            <td th:text="${stu.username}"></td>
+            <td th:text="${stu.password}"></td>
+            <td th:text="${#dates.format(stu.birthday,'yyyy-MM-dd HH:mm:ss')}"></td>
+        </tr>
+    </table>
+</body>
+</html>

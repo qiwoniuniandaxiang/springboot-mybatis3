@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+来了
+    <form action="usertest" method="post">
+        姓名:<input type="text" name="name"/>
+        <!--<span th:text="${user.name}"></span>-->
+        生日:<input type="text" name="birthday"/>
+       <!-- <span th:text="${user.birthday}"></span>-->
+        邮箱:<input type="text" name="email"/>
+       <!-- <span th:text="${user.email}"></span>-->
+        手机:<input type="text" name="phone"/>
+       <!-- <span th:text="${user.phone}"></span>-->
+        <input type="submit" value="提交"/>
+    </form>
+</body>
+</html>
